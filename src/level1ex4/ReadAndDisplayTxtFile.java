@@ -1,20 +1,24 @@
 package level1ex4;
 
+
+import java.io.File;
+
 public class ReadAndDisplayTxtFile {
 
+    private static void readAndDisplayTxtFile(File fileObj){
+
+    }
     public static void main(String[] args){
 
-        switch (args.length) {
-            case 1:
-                ShowSortedFilesFromAGivenPath.writeDirContentNamesToTxt(args[0]);
-                break;
-            case 0:
-                System.err.println("No arguments!!");
-                break;
-            default:
-                System.err.println("Many arguments are not allowed!!");
-                break;
+        if (args.length == 1){
+            File fileObject = new File(args[0]);
+            if (fileObject.exists() && fileObject.isFile())
+                readAndDisplayTxtFile(fileObject);
+            else
+                System.err.println("It's not a file or not exist!!");
         }
+        else
+            System.err.println("Only one argument is valid!!");
     }
 
 
