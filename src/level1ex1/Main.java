@@ -1,10 +1,23 @@
 package level1ex1;
 
+
+
 public class Main{
+
     public static void main(String[] args){
-        final String pathname = "/home/apm/developWorkspaces/intellij-workspace/Java_Cibernarium/sprint1/1.5-Java_Utils";
 
-        ShowSortedFilesFromAGivenPath.showSortedFiles(pathname);
-
+        switch (args.length) {
+            case 1:
+                ShowSortedFilesFromAGivenPath.showSortedFiles(args[0]);
+                break;
+            case 0:
+                System.err.println("No path in arguments!!");
+                break;
+            default:
+                System.err.println("Many arguments are not allowed!!");
+                break;
+        }
     }
+
+
 }
