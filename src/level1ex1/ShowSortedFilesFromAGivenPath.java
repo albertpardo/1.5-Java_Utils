@@ -1,16 +1,15 @@
 package level1ex1;
 
 import java.io.File;
-import java.util.Arrays;
 
-public class ShowSortedFliesFromAGivenFolder {
-    public static void main(String[] args){
+public class ShowSortedFilesFromAGivenPath {
+    public static void showSortedFiles(String pathname){
      //from https://www.geeksforgeeks.org/java/file-list-method-in-java-with-examples/
         // try-catch block to handle exceptions
         try {
 
             // Create a file object
-            File f = new File("/home/apm/developWorkspaces/intellij-workspace/Java_Cibernarium/sprint1/1.5-Java_Utils");
+            File f = new File(pathname);
 
             // Get all the names of the files present
             // in the given directory
