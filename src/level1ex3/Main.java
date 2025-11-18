@@ -6,7 +6,7 @@ public class Main{
 
         switch (args.length) {
             case 1:
-                ShowSortedFilesFromAGivenPath.showSortedFiles(args[0]);
+                ShowSortedFilesFromAGivenPath.writeDirContentNamesToTxt(args[0]);
                 break;
             case 0:
                 System.err.println("No arguments!!");

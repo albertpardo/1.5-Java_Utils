@@ -1,6 +1,9 @@
 package level1ex3;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
@@ -13,6 +16,7 @@ import java.util.Collections;
 public class ShowSortedFilesFromAGivenPath {
     static final String MSG_NO_EXIST = "Path not Exist!!";
     static final String MSG_NO_DIR = "This is not a directory!!";
+    private static final String OUTPUT_FILE_NAME = "directoriesInfo.txt";
 
     private static LocalDateTime getLastModified(File fileObj){
         long lastModified;
@@ -31,7 +35,7 @@ public class ShowSortedFilesFromAGivenPath {
         return "(x)";
     }
 
-     private static void printAsDirOrFile(String pathname, ArrayList<String> filesArrayList){
+     private static void writeToTxt(String pathname, ArrayList<String> filesArrayList, PrintWriter writerObject){
         try {
             Path newPathName;
             File fileObject;
@@ -43,15 +47,15 @@ public class ShowSortedFilesFromAGivenPath {
                 fileObject = new File(newPathName.toUri());
                 typeFile = getTypeFile(fileObject);
                 date = getLastModified(fileObject);
-                System.out.println(fileName + " " + typeFile + " " + date);
+                writerObject.println(fileName + " " + typeFile + " " + date);
             }
         }
         catch (Exception e) {
             System.err.println(e.getMessage());
         }
-    }
+     }
 
-     private static void goToInnerDir(String pathname, ArrayList<String> filesArrayList) {
+     private static void goToInnerDir(String pathname, ArrayList<String> filesArrayList, PrintWriter writerObject) {
         try {
             Path newPathName;
             File fileObject;
@@ -60,7 +64,7 @@ public class ShowSortedFilesFromAGivenPath {
                 newPathName = Paths.get(pathname, fileName);
                 fileObject = new File(newPathName.toUri());
                 if (fileObject.isDirectory())
-                    showSortedFiles(String.valueOf(newPathName.toString()));
+                    writeToTxtProcess(String.valueOf(newPathName.toString()), writerObject);
             }
         }
         catch (Exception e) {
@@ -68,8 +72,32 @@ public class ShowSortedFilesFromAGivenPath {
         }
     }
 
-    public static void showSortedFiles(String pathname){
-        try {
+    private static void writeToTxtProcess(String pathname,PrintWriter writerObject){
+        File fileObject = new File(pathname);
+        String[] filesString;
+        ArrayList<String> filesArrayList;
+
+        if (!fileObject.exists()){
+            System.err.println(MSG_NO_EXIST);
+            return;
+        }
+        if (!fileObject.isDirectory()){
+            System.err.println(MSG_NO_DIR);
+            return;
+        }
+        filesString = fileObject.list();
+        if (filesString != null) {
+            filesArrayList = new ArrayList<>(Arrays.asList(filesString));
+            Collections.sort(filesArrayList);
+            writerObject.println("** Files in '" + pathname + "' (D) are:" );
+            writeToTxt(pathname, filesArrayList, writerObject);
+            goToInnerDir(pathname, filesArrayList, writerObject);
+        }
+    }
+
+    public static void writeDirContentNamesToTxt(String pathname) {
+        try (PrintWriter writerObject = new PrintWriter(new FileWriter(OUTPUT_FILE_NAME, false))){
+            /*
             File fileObject = new File(pathname);
             String[] filesString;
             ArrayList<String> filesArrayList;
@@ -87,11 +115,13 @@ public class ShowSortedFilesFromAGivenPath {
                 filesArrayList = new ArrayList<>(Arrays.asList(filesString));
                 Collections.sort(filesArrayList);
                 System.out.println("** Files in '" + pathname + "' (D) are:" );
-                printAsDirOrFile(pathname, filesArrayList);
-                goToInnerDir(pathname, filesArrayList);
+                writeToTxt(pathname, filesArrayList, writerObject);
+                goToInnerDir(pathname, filesArrayList, writerObject);
             }
+            */
+            writeToTxtProcess(pathname, writerObject);
         }
-        catch (Exception e) {
+        catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
