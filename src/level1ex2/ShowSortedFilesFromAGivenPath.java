@@ -32,32 +32,69 @@ public class ShowSortedFilesFromAGivenPath {
         return "(x)";
     }
 
+    /*
     private static void printAsDirOrFile(String pathname, String fileName){
         try {
             Path newPathName = Paths.get(pathname, fileName);
             File fileObject = new File(newPathName.toUri());
-            String typeFile;
+            String typeFile= "(x)";
             LocalDateTime date;
 
-            /*
             typeFile = getTypeFile(fileObject);
             date = getLastModified(fileObject);
             System.out.println(fileName + " " +  typeFile + " " + date);
-            */
+        }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+*/
+    private static void printAsDirOrFile(String pathname, ArrayList<String> filesArrayList){
+        try {
+            Path newPathName;
+            File fileObject;
+            String typeFile;
+            LocalDateTime date;
 
-            date = getLastModified(fileObject);
-            typeFile = "(x)";
-            if (fileObject.isDirectory()){
-                typeFile = "(D)";
-                System.out.println(fileName + " " +  typeFile + " " + date);
-                showSortedFiles(String.valueOf(newPathName.toUri()));
-            }
-            else if (fileObject.isFile()) {
-                typeFile = "(F)";
+            for (String fileName : filesArrayList) {
+                newPathName = Paths.get(pathname, fileName);
+                fileObject = new File(newPathName.toUri());
+                typeFile = getTypeFile(fileObject);
+                date = getLastModified(fileObject);
                 System.out.println(fileName + " " + typeFile + " " + date);
             }
-            else
-                System.out.println(fileName + " " + typeFile + " " + date);
+        }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    /*
+    private static void goToInnerDir(String pathname, String fileName) {
+        try {
+            Path newPathName = Paths.get(pathname, fileName);
+            File fileObject = new File(newPathName.toUri());
+
+            if (fileObject.isDirectory())
+                showSortedFiles(String.valueOf(newPathName.toString()));
+        }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+     */
+
+    private static void goToInnerDir(String pathname, ArrayList<String> filesArrayList) {
+        try {
+            Path newPathName;
+            File fileObject;
+
+            for (String fileName : filesArrayList) {
+                newPathName = Paths.get(pathname, fileName);
+                fileObject = new File(newPathName.toUri());
+                if (fileObject.isDirectory())
+                    showSortedFiles(String.valueOf(newPathName.toString()));
+            }
         }
         catch (Exception e) {
             System.err.println(e.getMessage());
@@ -82,10 +119,18 @@ public class ShowSortedFilesFromAGivenPath {
             if (filesString != null) {
                 filesArrayList = new ArrayList<>(Arrays.asList(filesString));
                 Collections.sort(filesArrayList);
-                System.out.println(MSG_SHOW_FILE_LIST);
+                System.out.println("** Files in '" + pathname + "' (D) are:" );
+                /*
                 for (String fileName : filesArrayList) {
                     printAsDirOrFile(pathname, fileName);
+                }*/
+                printAsDirOrFile(pathname, filesArrayList);
+                /*
+                for (String fileName : filesArrayList) {
+                    goToInnerDir(pathname, fileName);
                 }
+                */
+                goToInnerDir(pathname, filesArrayList);
             }
         }
         catch (Exception e) {
