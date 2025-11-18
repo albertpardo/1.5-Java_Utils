@@ -9,7 +9,7 @@ public class Main{
                 ShowSortedFilesFromAGivenPath.showSortedFiles(args[0]);
                 break;
             case 0:
-                System.err.println("No path in arguments!!");
+                System.err.println("No arguments!!");
                 break;
             default:
                 System.err.println("Many arguments are not allowed!!");
