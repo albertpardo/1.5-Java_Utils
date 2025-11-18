@@ -97,31 +97,9 @@ public class ShowSortedFilesFromAGivenPath {
 
     public static void writeDirContentNamesToTxt(String pathname) {
         try (PrintWriter writerObject = new PrintWriter(new FileWriter(OUTPUT_FILE_NAME, false))){
-            /*
-            File fileObject = new File(pathname);
-            String[] filesString;
-            ArrayList<String> filesArrayList;
-
-            if (!fileObject.exists()){
-                System.err.println(MSG_NO_EXIST);
-                return;
-            }
-            if (!fileObject.isDirectory()){
-                System.err.println(MSG_NO_DIR);
-                return;
-            }
-            filesString = fileObject.list();
-            if (filesString != null) {
-                filesArrayList = new ArrayList<>(Arrays.asList(filesString));
-                Collections.sort(filesArrayList);
-                System.out.println("** Files in '" + pathname + "' (D) are:" );
-                writeToTxt(pathname, filesArrayList, writerObject);
-                goToInnerDir(pathname, filesArrayList, writerObject);
-            }
-            */
             writeToTxtProcess(pathname, writerObject);
         }
-        catch (IOException e) {
+        catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }

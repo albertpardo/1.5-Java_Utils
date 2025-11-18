@@ -52,7 +52,9 @@ Fork or download this repo.
 
 Run with *IntelliJ IDEA 2025.2.4* or import to your favorite IDE.
 
-For **level 1** exercises get the path name as **Program Argument** . For *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
+> For **level 1** exercises get the path name as **Program Argument** . For *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
+
+> When run Level 1/ Exercise 3 with IntelliJ the output file directoriesInfo.txt will be located on main folder where you commit this task. 
 
 This code has been only tested under:
 - *IDE* : IntelliJ IDEA 2025.2.4 (Community Edition)
