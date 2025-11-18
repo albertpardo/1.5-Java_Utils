@@ -1,6 +1,8 @@
 package level1ex2;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -13,24 +15,36 @@ public class ShowSortedFilesFromAGivenPath {
     static final String MSG_NO_DIR = "This is not a directory!!";
     static final String MSG_SHOW_FILE_LIST = "** Files are:";
 
+    private static LocalDateTime getLastModified(File fileObj){
+        long lastModified;
+        Instant instant;
+
+        lastModified = fileObj.lastModified();
+        instant = Instant.ofEpochMilli(lastModified);
+        return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+    }
+
+    private static  String getTypeFile(File fileObject){
+        if (fileObject.isDirectory())
+            return "(D)";
+        else if (fileObject.isFile())
+            return "(F)";
+        return "(x)";
+    }
+
     private static void printAsDirOrFile(String pathname, String fileName){
-        String newPathName = pathname + fileName;
-        String typeFile = "";
-
         try {
-            File fileObject = new File(pathname);
-            if (fileObject.isDirectory())
-                typeFile = "(D)";
-            if (fileObject.isFile())
-                typeFile = "(F)";
-            long lastModified = fileObject.lastModified();
+            Path newPathName = Paths.get(pathname, fileName);
+            File fileObject = new File(newPathName.toUri());
+            String typeFile;
+            LocalDateTime date;
 
-            Instant instant = Instant.ofEpochMilli(lastModified);
-            LocalDateTime date = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+            typeFile = getTypeFile(fileObject);
+            date = getLastModified(fileObject);
             System.out.println(fileName + " " +  typeFile + " " + date);
         }
         catch (Exception e) {
-        System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 
