@@ -39,9 +39,25 @@ public class ShowSortedFilesFromAGivenPath {
             String typeFile;
             LocalDateTime date;
 
+            /*
             typeFile = getTypeFile(fileObject);
             date = getLastModified(fileObject);
             System.out.println(fileName + " " +  typeFile + " " + date);
+            */
+
+            date = getLastModified(fileObject);
+            typeFile = "(x)";
+            if (fileObject.isDirectory()){
+                typeFile = "(D)";
+                System.out.println(fileName + " " +  typeFile + " " + date);
+                showSortedFiles(String.valueOf(newPathName.toUri()));
+            }
+            else if (fileObject.isFile()) {
+                typeFile = "(F)";
+                System.out.println(fileName + " " + typeFile + " " + date);
+            }
+            else
+                System.out.println(fileName + " " + typeFile + " " + date);
         }
         catch (Exception e) {
             System.err.println(e.getMessage());
