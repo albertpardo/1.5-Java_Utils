@@ -56,7 +56,7 @@ This code has been only tested under:
 
 Run with *IntelliJ IDEA 2025.2.4* or import to your favorite IDE.
 
-> For **level 1** exercises get the path name as **Program Argument** . For *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
+> For **Level 1 / Exercises 1 to 4**  put *path name* as **Program Argument** . In *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
 
 ### Level 1 - Exercise 3
 
@@ -70,7 +70,7 @@ For example, on Linux or Mac, `/home/user/documents/file.txt` is an absolute pat
 
 ### Level 1 - Exercise 5
 
-This exercise must be executed on terminal. Follow those steps:
+This exercise must be executed on terminal. Follow those steps:
 
 1. `cd src/level1ex5`
 2. `javac *.java` for compile on console. 
