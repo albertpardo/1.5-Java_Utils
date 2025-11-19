@@ -62,9 +62,18 @@ Run with *IntelliJ IDEA 2025.2.4* or import to your favorite IDE.
 
 When run Level 1/Exercise 3 with IntelliJ the output file `directoriesInfo.txt` will be located on main folder where you commit this task.
 
-### Level 1 - Exercise 3
+### Level 1 - Exercise 4
 
 Use absolute path for the *TXT* file To run the program with *IntelliJ* with the option **Run with paramaters**
 
-For example, on Linux, `/home/user/documents/file.txt` is an absolute path, while on Windows, it might be `C:\Users\user\Documents\file.txt`
+For example, on Linux or Mac, `/home/user/documents/file.txt` is an absolute path, while on Windows, it might be `C:\Users\user\Documents\file.txt`
+
+### Level 1 - Exercise 5
+
+This exercise must be executed on terminal. Follow those steps:
+
+1. `cd src/level1ex5`
+2. `javac *.java` for compile on console. 
+3. `cd ..`
+4. `java level1ex5.SerializerTestInJava` for run the program.
 
