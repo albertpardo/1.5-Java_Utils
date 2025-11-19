@@ -64,7 +64,7 @@ public class ShowSortedFilesFromAGivenPath {
                 newPathName = Paths.get(pathname, fileName);
                 fileObject = new File(newPathName.toUri());
                 if (fileObject.isDirectory())
-                    writeToTxtProcess(String.valueOf(newPathName.toString()), writerObject);
+                    writeToTxtProcess(newPathName.toString(), writerObject);
             }
         }
         catch (Exception e) {

@@ -16,6 +16,7 @@ public class ShowSortedFilesFromAGivenPath {
     static final String MSG_NO_EXIST = "Path not Exist!!";
     static final String MSG_NO_DIR = "This is not a directory!!";
     private static final String OUTPUT_FILE_NAME = "directoriesInfo.txt";
+    private static final String PROPERTIES_CONFIG_FILE = "level2ex1/resources/config.properties";
 
     private static LocalDateTime getLastModified(File fileObj){
         long lastModified;
@@ -63,7 +64,7 @@ public class ShowSortedFilesFromAGivenPath {
                 newPathName = Paths.get(pathname, fileName);
                 fileObject = new File(newPathName.toUri());
                 if (fileObject.isDirectory())
-                    writeToTxtProcess(String.valueOf(newPathName.toString()), writerObject);
+                    writeToTxtProcess(newPathName.toString(), writerObject);
             }
         }
         catch (Exception e) {
@@ -94,7 +95,9 @@ public class ShowSortedFilesFromAGivenPath {
         }
     }
 
-    public static void writeDirContentNamesToTxt(String pathname) {
+    public static void writeDirContentNamesToTxt() {
+        String pathname = "TO_DEFINE1";
+
         try (PrintWriter writerObject = new PrintWriter(new FileWriter(OUTPUT_FILE_NAME, false))){
             writeToTxtProcess(pathname, writerObject);
         }
