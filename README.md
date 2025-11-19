@@ -50,13 +50,21 @@ Fork or download this repo.
 
 ## ▶️ Execution
 
+This code has been only tested under:
+- *IDE* : IntelliJ IDEA 2025.2.4 (Community Edition)
+- *Java version* : openjdk 21.0.8 2025-07-15
+
 Run with *IntelliJ IDEA 2025.2.4* or import to your favorite IDE.
 
 > For **level 1** exercises get the path name as **Program Argument** . For *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
 
-> When run Level 1/ Exercise 3 with IntelliJ the output file directoriesInfo.txt will be located on main folder where you commit this task. 
+### Level 1 - Exercise 3
 
-This code has been only tested under:
-- *IDE* : IntelliJ IDEA 2025.2.4 (Community Edition)
-- *Java version* : openjdk 21.0.8 2025-07-15
+When run Level 1/Exercise 3 with IntelliJ the output file `directoriesInfo.txt` will be located on main folder where you commit this task.
+
+### Level 1 - Exercise 3
+
+Use absolute path for the *TXT* file To run the program with *IntelliJ* with the option **Run with paramaters**
+
+For example, on Linux, `/home/user/documents/file.txt` is an absolute path, while on Windows, it might be `C:\Users\user\Documents\file.txt`
 

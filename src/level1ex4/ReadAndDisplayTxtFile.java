@@ -1,28 +1,23 @@
 package level1ex4;
 
-
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 
 public class ReadAndDisplayTxtFile {
 
     private static void readAndDisplayTxtFile(File fileObj){
-
-    }
-    public static void main(String[] args){
-
-        /*
-        if (args.length == 1){
-            File fileObject = new File(args[0]);
-            if (fileObject.exists() && fileObject.isFile())
-                readAndDisplayTxtFile(fileObject);
-            else
-                System.err.println("It's not a file or not exist!!");
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileObj))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error reading the file: " + fileObj, e);
         }
-        else
-            System.err.println("Only one argument is valid!!");
+    }
 
-         */
-
+    public static void main(String[] args){
         try {
             if (args.length != 1)
                 throw new RuntimeException("Only one argument is valid!!");
@@ -35,6 +30,4 @@ public class ReadAndDisplayTxtFile {
             System.err.println(e.getMessage());
         }
     }
-
-
 }
