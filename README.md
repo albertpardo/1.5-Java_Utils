@@ -50,17 +50,20 @@ Fork or download this repo.
 
 ## ▶️ Execution
 
-This code has been only tested under:
+Tested with **Ubuntu 24.04.3 LTS**.
+
+
+### Level 1 - Exercises 1 to 4
+
+Tested with:
 - *IDE* : IntelliJ IDEA 2025.2.4 (Community Edition)
 - *Java version* : openjdk 21.0.8 2025-07-15
 
-Run with *IntelliJ IDEA 2025.2.4* or import to your favorite IDE.
-
-> For **Level 1 / Exercises 1 to 4**  put *path name* as **Program Argument** . In *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
+Put *path name* as **Program Argument** in *IntelliJ* runnig process select the option **Run with paramaters..** and put the input argument on **Program arguments'** cell.
 
 ### Level 1 - Exercise 3
 
-When run Level 1/Exercise 3 with IntelliJ the output file `directoriesInfo.txt` will be located on main folder where you commit this task.
+When run *Level 1/Exercise 3* with *IntelliJ* the output file `directoriesInfo.txt` will be located on main folder where you commit this task.
 
 ### Level 1 - Exercise 4
 
@@ -70,10 +73,20 @@ For example, on Linux or Mac, `/home/user/documents/file.txt` is an absolute pat
 
 ### Level 1 - Exercise 5
 
-This exercise must be executed on terminal. Follow those steps:
+This exercise must be executed on terminal. Follow those steps :
 
-1. `cd src/level1ex5`
+1. Go to `level1ex5` folder : `cd src/level1ex5`
 2. `javac *.java` for compile on console. 
 3. `cd ..`
 4. `java level1ex5.SerializerTestInJava` for run the program.
+
+### Level 2 - Exercise 1
+
+This exercise must be executed on terminal. Follow those steps :
+
+1. Go to `level2ex1` folder : `cd src/level2ex1`
+2. `javac *.java` for compile on console. 
+3. `cd ..`
+4. `java level2ex1.Main` for run the program.
+
 

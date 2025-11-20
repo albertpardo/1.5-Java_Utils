@@ -17,9 +17,6 @@ public class Main{
         final String INPUT_DIR = "input.directory";
         final String OUTPUT_FILE = "output.file";
 
-        pathname = "TODO_1";
-        outputFileName = "TODO_2";
-
         Properties properties = new Properties();
 
         try(InputStream inputStream = new FileInputStream(PROPERTIES_CONFIG_FILE)) {
@@ -31,9 +28,9 @@ public class Main{
         pathname = properties.getProperty(INPUT_DIR);
         outputFileName = properties.getProperty(OUTPUT_FILE);
 
-        if(pathname == null || pathname.trim().isEmpty()) {
+        if(pathname == null || pathname.trim().isEmpty() || outputFileName == null || outputFileName.trim().isEmpty()) {
             throw new IllegalArgumentException(
-                    "Property doesn't found in " + PROPERTIES_CONFIG_FILE);
+                    "A property doesn't found in " + PROPERTIES_CONFIG_FILE);
         }
 
         System.out.println("Load configuration:");
@@ -43,10 +40,13 @@ public class Main{
 
     public static void main(String[] args){
 
-        getDataFromPropertiesConfigFile();
-
-        //ShowSortedFilesFromAGivenPath.writeDirContentNamesToTxt(pathname, outputFileName);
+        try{
+            getDataFromPropertiesConfigFile();
+            ShowSortedFilesFromAGivenPath.writeDirContentNamesToTxt(pathname, outputFileName);
+            System.out.println("Generated file can be found with the path : " + outputFileName);
+        }
+        catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
-
-
 }
