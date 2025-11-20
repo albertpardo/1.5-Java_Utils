@@ -15,8 +15,7 @@ import java.util.Collections;
 public class ShowSortedFilesFromAGivenPath {
     static final String MSG_NO_EXIST = "Path not Exist!!";
     static final String MSG_NO_DIR = "This is not a directory!!";
-    private static final String OUTPUT_FILE_NAME = "directoriesInfo.txt";
-    private static final String PROPERTIES_CONFIG_FILE = "level2ex1/resources/config.properties";
+
 
     private static LocalDateTime getLastModified(File fileObj){
         long lastModified;
@@ -95,10 +94,10 @@ public class ShowSortedFilesFromAGivenPath {
         }
     }
 
-    public static void writeDirContentNamesToTxt() {
-        String pathname = "TO_DEFINE1";
+    public static void writeDirContentNamesToTxt(String pathname, String outputFileName) {
 
-        try (PrintWriter writerObject = new PrintWriter(new FileWriter(OUTPUT_FILE_NAME, false))){
+
+        try (PrintWriter writerObject = new PrintWriter(new FileWriter(outputFileName, false))){
             writeToTxtProcess(pathname, writerObject);
         }
         catch (Exception e) {
